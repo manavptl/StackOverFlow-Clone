@@ -10,7 +10,10 @@ module.exports = class Basic extends BaseController {
     async upVoteQuestion(req, res) {
         try {
             const token = req.userData;
-            const questionId = req.params.questionId;
+            const questionId = req.query.questionId;
+
+            console.log(questionId);
+            console.log(token.userId);
 
             const question = await questionModel.findById(questionId);
 
@@ -37,7 +40,7 @@ module.exports = class Basic extends BaseController {
     async downVoteQuestion(req, res) {
         try {
             const token = req.userData;
-            const questionId = req.params.questionId;
+            const questionId = req.query.questionId;
 
             const question = await questionModel.findById(questionId);
 
@@ -64,7 +67,7 @@ module.exports = class Basic extends BaseController {
     async upVoteAnswer(req, res) {
         try {
             const token = req.userData;
-            const answerId = req.params.answerId;
+            const answerId = req.query.answerId;
 
             const answer = await answerModel.findById(answerId);
 
@@ -91,7 +94,7 @@ module.exports = class Basic extends BaseController {
     async downVoteAnswer(req, res) {
         try {
             const token = req.userData;
-            const answerId = req.params.answerId;
+            const answerId = req.query.answerId;
 
             const answer = await answerModel.findById(answerId);
 
